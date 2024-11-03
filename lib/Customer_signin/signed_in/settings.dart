@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:global/Customer_signin/signed_in/Privacy Policy.dart';
 import 'package:global/Customer_signin/signed_in/Terms and Conditions.dart';
 import 'package:global/login_screen.dart';
+import 'package:global/Customer_signin/signed_in/About_us.dart';
 class SettingsScreen extends StatefulWidget {
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -13,7 +14,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _darkMode = false;
   bool _notifications = true;
   String _language = 'English';
-  List<String> _languages = ['English', 'Spanish', 'French'];
+  List<String> _languages = ['English', 'Spanish', 'French','Mandarin Chinese','Hindi'];
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         title: Text('Settings'),
       ),
-      body: Padding(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background.jpg"), // Background image
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.orange.withOpacity(0.1),
+              BlendMode.dstATop,
+            ),
+          ),
+        ),
+        child:  Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -108,6 +120,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             Divider(thickness: 1),
 
+            ListTile(
+              title: Text('About us'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CompanyPage()),
+                );
+                // Navigate to Terms and Conditions screen
+              },
+            ),
+
+            Divider(thickness: 1),
+
             // Logout
             ListTile(
               title: Text('Logout'),
@@ -119,6 +144,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ],
         ),
       ),
-    );
+    ));
   }
 }

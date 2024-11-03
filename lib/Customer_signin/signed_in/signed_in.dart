@@ -8,7 +8,8 @@ import 'Tips.dart';
 import 'Profile.dart';
 import 'Notification.dart';
 import 'settings.dart';
-
+import 'package:global/Customer_signin/signed_in/Packages.dart';
+import 'package:global/Customer_signin/signed_in/Budget.dart';
 
 
 
@@ -18,9 +19,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange[50],
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: Text('Welcome to GTT'),
         backgroundColor: Colors.orange,
         actions: <Widget>[
           IconButton(
@@ -28,16 +28,42 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Notificationscreen()),
+                MaterialPageRoute(builder: (context) => NotificationScreen()),
               );
             },
           ),
         ],
       ),
       drawer: AppDrawer(), // Adding App Drawer here
-      body: GridView.count(
+      body: Container(
+    decoration: BoxDecoration(
+    image: DecorationImage(
+    image: AssetImage("assets/images/background.jpg"), // Path to your background image
+    fit: BoxFit.cover, // Cover the entire screen
+    ),
+    ),
+    child: GridView.count(
         crossAxisCount: 2,
         children: [
+          Card(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  iconSize: 50,
+                  icon:Icon(Icons.travel_explore,color:Colors.orange),
+                    onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context)=>TravelPackagesPage()
+                    ));
+
+                    },
+            ),
+              Text('Travel Packages',style: TextStyle(fontSize: 18))
+              ],
+            ),
+          ),
 
           Card(
             child: Column(
@@ -49,32 +75,37 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => OrderScreen()),
-                    );
+                      MaterialPageRoute(builder: (context) => PackageListPage(),
+                    ));
                   },
                 ),
-                Text('Requests', style: TextStyle(fontSize: 18)),
+                Text('Added packages', style: TextStyle(fontSize: 18)),
               ],
             ),
           ),
-          Card(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  iconSize: 50,
-                  icon: Icon(Icons.monetization_on, color: Colors.red),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => TransactionScreen()),
-                    );
-                  },
-                ),
-                Text('Transactions', style: TextStyle(fontSize: 18)),
-              ],
+      Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              iconSize: 50,
+              icon: Icon(Icons.monetization_on, color: Colors.red),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BudgetRequirementsPage(),
+                  ),
+                );
+              },
             ),
-          ),
+            Text(
+              'Budget',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
           Card(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -95,7 +126,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ));
   }
 }
 // App Drawer Widget

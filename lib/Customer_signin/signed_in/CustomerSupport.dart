@@ -13,17 +13,16 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   final List<String> _predefinedQuestions = [
     'Hello',
     'What is your name',
-    'How do I track my order',
-    'What is your return policy',
-    'How do I list my crops for sale?',
-    'How can I view the crops I have listed for sale?'
+    'How do I track my order on package',
+    'What is your refund policy',
+    'How do I trust if GTT is safe?',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chatbot Customer Care'),
+        title: Text('Customer Care'),
       ),
       body: Column(
         children: [
@@ -110,16 +109,13 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         return 'Hello! How can I assist you today?';
       case 'what is your name':
         return 'My name is Chatbot, and I\'m here to help you with any questions or concerns you may have.';
-      case 'how do i track my order':
+      case 'how do i track my order on package':
         return 'You can track your order by logging into your account and clicking on the "Order History" tab.';
-      case 'what is your return policy':
-        return 'Our return policy allows you to return items within 7 days of delivery. Please see our website for more details.';
-      case 'how do i list my crops for sale?':
-        return 'To list your crops for sale, go to the "Marketplace" section of the app. Select the type of crop you want to sell from the dropdown menu, enter the price per unit, and click the "Sell" button. Your crop will then be listed for others to purchase.';
-      case 'how can i view the crops i have listed for sale?':
-        return 'You can view your listed crops by going to the "Orders" section. All of your active listings will be displayed there, along with their prices. You can also manage or remove any listings from this screen.';
-      default:
-        return 'Our team will reach out to you soon (Contact: 6969696969; Email: Hackaholics@gmail.com)';
+      case 'what is your refund policy':
+        return 'Our refund policy allows you to refund your amount within 7 days to your respective payment id. Please see our website for more details.';
+      case 'how do i trust if gtt is safe?':
+        return 'We value transparency and the experiences of our travelers. You can find genuine reviews and testimonials from satisfied customers who have enjoyed seamless, memorable journeys with GTT. We are proud to showcase their stories.';
+
     }
   }
 }
